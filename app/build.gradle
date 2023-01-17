@@ -10,11 +10,11 @@ apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'androidx.navigation.safeargs'
 
 android {
-    namespace 'fr.uha.ensisa.projet'
+    namespace 'fr.uha.gm.projet'
     compileSdk 32
 
     defaultConfig {
-        applicationId "fr.uha.ensisa.projet"
+        applicationId "fr.uha.gm.projet"
         minSdk 27
         targetSdk 32
         versionCode 1
