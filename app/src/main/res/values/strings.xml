@@ -3,4 +3,10 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="liste_des_conseils">Liste des conseils</string>
+    <string name="ajouter_un_conseil">Ajouter un conseil</string>
+    <string name="nom_du_conseil">Nom du conseil</string>
+    <string name="description">Description</string>
+    <string name="title_conseils">Conseils</string>
+    <string name="title_save">Sauvegarder</string>
 </resources>

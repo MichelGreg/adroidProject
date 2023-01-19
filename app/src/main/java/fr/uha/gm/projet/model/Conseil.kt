@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "conseils")
-class Conseils (
+class Conseil (
     @PrimaryKey(autoGenerate = true)
     val cid : Long = 0,
     val titre : String = "",

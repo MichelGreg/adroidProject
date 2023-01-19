@@ -3,13 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/navigation_dashboard">
+
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="fr.uha.gm.projet.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/listConseilsFragment"
+        android:name="fr.uha.gm.projet.ui.conseils.ListConseilsFragment"
+        android:label="@string/title_conseils"
+        tools:layout="@layout/fragment_list_conseils" >
+        <action
+            android:id="@+id/action_navigation_list_to_conseil"
+            app:destination="@id/navigation_conseil" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_conseil"
+        android:name="fr.uha.gm.projet.ui.conseils.ConseilFragment"
+        android:label="ConseilFragment"
+        tools:layout="@layout/fragment_conseil">
+        <argument
+            android:name="id"
+            app:argType="long"
+            android:defaultValue="0L" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
