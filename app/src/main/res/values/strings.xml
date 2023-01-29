@@ -9,4 +9,13 @@
     <string name="description">Description</string>
     <string name="title_conseils">Conseils</string>
     <string name="title_save">Sauvegarder</string>
+    <string name="title_day">jour</string>
+    <string name="title_calendar">Calendrier</string>
+    <string name="autres_conseils">Autres conseils :</string>
+    <string name="conseil_du_jour">Conseil du jour :</string>
+    <plurals name="compositions">
+        <item quantity="zero">%1s et pas d\'autre conseil</item>
+        <item quantity="one">%1s and 1 autre conseil</item>
+        <item quantity="other">%1s and %2d autres conseils</item>
+    </plurals>
 </resources>

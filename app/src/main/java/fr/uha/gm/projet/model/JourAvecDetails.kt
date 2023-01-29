@@ -5,6 +5,6 @@ import androidx.room.Embedded
 class JourAvecDetails (
     @Embedded
     var day : Jour,
-    var nomConseilPrincipal : String,
+    var nomPrincipal : String,
     var conseilsCount : Int,
 )

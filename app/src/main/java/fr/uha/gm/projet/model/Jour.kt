@@ -8,6 +8,6 @@ data class Jour (
     @PrimaryKey(autoGenerate = true)
     val jid : Long = 0,
     val name : String = "",
-    val conseilPrincipalId : Long
+    val principalId : Long
 ) {
 }

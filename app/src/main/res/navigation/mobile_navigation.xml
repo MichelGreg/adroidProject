@@ -5,9 +5,32 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@id/navigation_dashboard">
 
+    <fragment
+        android:id="@+id/navigation_calendar"
+        android:name="fr.uha.gm.projet.ui.calendar.CalendarFragment"
+        android:label="CalendarFragment"
+        tools:layout="@layout/fragment_calendar">
+        <action
+            android:id="@+id/action_navigation_list_to_day"
+            app:destination="@id/navigation_day" />
+    </fragment>
 
     <fragment
-        android:id="@+id/listConseilsFragment"
+        android:id="@+id/navigation_day"
+        android:name="fr.uha.gm.projet.ui.calendar.JourFragment"
+        android:label="@string/title_day"
+        tools:layout="@layout/fragment_day" >
+        <argument
+            android:name="id"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <action
+            android:id="@+id/action_navigation_day_to_personPickerFragment"
+            app:destination="@id/conseilPickerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_listConseil"
         android:name="fr.uha.gm.projet.ui.conseils.ListConseilsFragment"
         android:label="@string/title_conseils"
         tools:layout="@layout/fragment_list_conseils" >
@@ -49,6 +72,17 @@
         <argument
             android:name="title"
             app:argType="integer" />
+        <argument
+            android:name="requestKey"
+            app:argType="string" />
+    </dialog>
+    <dialog
+        android:id="@+id/conseilPickerFragment"
+        android:name="fr.uha.gm.projet.ui.ConseilPickerFragment"
+        android:label="ConseilPickerFragment">
+        <argument
+            android:name="principal"
+            app:argType="long" />
         <argument
             android:name="requestKey"
             app:argType="string" />
