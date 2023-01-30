@@ -68,11 +68,11 @@ class JourViewModel @Inject constructor (
         )
     }
 
-    fun removeConseil (memberId : Long) = viewModelScope.launch {
+    fun removeConseil (conseilId : Long) = viewModelScope.launch {
         jourDao.deleteAssociation(
             JourConseilsAssociation(
                 id.value!!,
-                memberId
+                conseilId
             )
         )
     }

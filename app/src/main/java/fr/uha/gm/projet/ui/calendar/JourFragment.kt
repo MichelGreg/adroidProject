@@ -43,8 +43,8 @@ class JourFragment : Fragment() {
         })
         parentFragmentManager.setFragmentResultListener(CONSEIL, this, FragmentResultListener {
                 requestKey, result ->
-            val memberId : Long = result.getLong(ConseilPickerFragment.CONSEIL)
-            jourViewModel!!.addConseil(memberId)
+            val conseilId : Long = result.getLong(ConseilPickerFragment.CONSEIL)
+            jourViewModel!!.addConseil(conseilId)
         })
     }
 
@@ -74,9 +74,6 @@ class JourFragment : Fragment() {
         }
         jourViewModel!!.principal.observe(viewLifecycleOwner) {
             binding.principal.conseil = it
-        }
-        binding.add.setOnClickListener {
-            NavHostFragment.findNavController(this).navigate(R.id.action_navigation_list_to_day)
         }
 
         binding.principal

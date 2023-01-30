@@ -53,7 +53,7 @@ class CalendarFragment : Fragment() {
                     override fun onSwiped(direction: Int, position: Int) {
                         val day: JourAvecDetails = adapter.get(position)
                         when (direction) {
-                            //ItemTouchHelper.LEFT -> onDelete(day)
+                            ItemTouchHelper.LEFT -> onDelete(day)
                             ItemTouchHelper.RIGHT -> onEdit(day)
                         }
                     }

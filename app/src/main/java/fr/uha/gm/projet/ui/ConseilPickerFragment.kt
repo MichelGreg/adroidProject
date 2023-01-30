@@ -141,6 +141,6 @@ class ConseilPickerFragment : DialogFragment() {
     }
 
     companion object {
-        const val CONSEIL: String = "conseil"
+        const val CONSEIL: String = "CONSEIL"
     }
 }

@@ -13,6 +13,7 @@
     <string name="title_calendar">Calendrier</string>
     <string name="autres_conseils">Autres conseils :</string>
     <string name="conseil_du_jour">Conseil du jour :</string>
+    <string name="nom_du_jour">Nom du jour</string>
     <plurals name="compositions">
         <item quantity="zero">%1s et pas d\'autre conseil</item>
         <item quantity="one">%1s and 1 autre conseil</item>
