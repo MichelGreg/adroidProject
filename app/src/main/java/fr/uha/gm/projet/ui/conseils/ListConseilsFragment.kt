@@ -3,10 +3,12 @@ package fr.uha.gm.projet.ui.conseils
 import android.os.Bundle
 import android.view.*
 import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -17,6 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import fr.uha.gm.android.ui.ItemSwipeCallback
 import fr.uha.gm.projet.R
 import fr.uha.gm.projet.BR
+import fr.uha.gm.projet.database.DatabaseFeed
 import fr.uha.gm.projet.databinding.ActivityMainBinding.inflate
 import fr.uha.gm.projet.databinding.ConseilItemBinding
 import fr.uha.gm.projet.databinding.FragmentListConseilsBinding
@@ -70,7 +73,7 @@ class ListConseilsFragment : Fragment() {
         }
         val menuHost : MenuHost = requireActivity()
 
-        /*menuHost.addMenuProvider(object : MenuProvider {
+        menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.populate_menu, menu)
             }
@@ -82,7 +85,7 @@ class ListConseilsFragment : Fragment() {
                 return false
             }
 
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)*/
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
         return binding.root
     }
 
