@@ -59,8 +59,8 @@ class JourViewModel @Inject constructor (
     fun addConseil (conseilId : Long) = viewModelScope.launch {
         jourDao.addAssociation(
             JourConseilsAssociation(
-                id.value!!,
-                conseilId
+                conseilId,
+                id.value!!
             )
         )
     }
