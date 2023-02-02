@@ -48,6 +48,9 @@
             android:name="id"
             app:argType="long"
             android:defaultValue="0L" />
+        <action
+            android:id="@+id/action_navigation_conseil_to_task"
+            app:destination="@id/taskPickerFragment" />
     </fragment>
 
     <fragment
@@ -83,6 +86,19 @@
         <argument
             android:name="principal"
             app:argType="long" />
+        <argument
+            android:name="requestKey"
+            app:argType="string" />
+    </dialog>
+
+    <dialog
+        android:id="@+id/taskPickerFragment"
+        android:name="fr.uha.gm.projet.ui.TaskPickerFragment"
+        android:label="TaskPickerFragment">
+        <argument
+            android:name="id"
+            app:argType="long"
+            android:defaultValue="0L" />
         <argument
             android:name="requestKey"
             app:argType="string" />

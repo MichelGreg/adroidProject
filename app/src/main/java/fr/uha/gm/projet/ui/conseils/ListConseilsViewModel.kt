@@ -5,6 +5,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import fr.uha.gm.projet.database.AppDatabase
 import fr.uha.gm.projet.database.ConseilDao
 import fr.uha.gm.projet.model.Conseil
+import fr.uha.gm.projet.model.ConseilAvecDetails
 import kotlinx.coroutines.launch
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
@@ -15,7 +16,7 @@ class ListConseilsViewModel @Inject constructor (
     private val dao : ConseilDao
 ) : ViewModel() {
 
-    val conseils : LiveData<List<Conseil>> = dao.getAll().asLiveData()
+    val conseils : LiveData<List<ConseilAvecDetails>> = dao.getAll().asLiveData()
 
     fun delete(conseil: Conseil) {
         val executor : Executor = Executors.newSingleThreadExecutor()

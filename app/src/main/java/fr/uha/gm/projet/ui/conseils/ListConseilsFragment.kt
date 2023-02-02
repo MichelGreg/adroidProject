@@ -24,6 +24,7 @@ import fr.uha.gm.projet.databinding.ActivityMainBinding.inflate
 import fr.uha.gm.projet.databinding.ConseilItemBinding
 import fr.uha.gm.projet.databinding.FragmentListConseilsBinding
 import fr.uha.gm.projet.model.Conseil
+import fr.uha.gm.projet.model.ConseilAvecDetails
 
 @AndroidEntryPoint
 class ListConseilsFragment : Fragment() {
@@ -55,7 +56,7 @@ class ListConseilsFragment : Fragment() {
             ItemSwipeCallback(requireContext(), ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT,
             object : ItemSwipeCallback.SwipeListener {
                 override fun onSwiped(direction: Int, position: Int) {
-                    val conseil: Conseil = adapter.get(position)
+                    val conseil: ConseilAvecDetails = adapter.get(position)
                     when (direction) {
                         ItemTouchHelper.LEFT -> onDelete(conseil)
                         ItemTouchHelper.RIGHT -> onEdit(conseil)
@@ -89,14 +90,14 @@ class ListConseilsFragment : Fragment() {
         return binding.root
     }
 
-    private fun onEdit(conseil: Conseil) {
+    private fun onEdit(conseil: ConseilAvecDetails) {
         val action = ListConseilsFragmentDirections.actionNavigationListToConseil()
-        action.id = conseil.cid
+        action.id = conseil.conseil.cid
         NavHostFragment.findNavController(this).navigate(action)
     }
 
-    private fun onDelete(conseil: Conseil) {
-        viewModel!!.delete(conseil)
+    private fun onDelete(conseil: ConseilAvecDetails) {
+        viewModel!!.delete(conseil.conseil)
     }
 
     override fun onDestroyView() {
@@ -105,7 +106,7 @@ class ListConseilsFragment : Fragment() {
     }
 
     inner class ConseilAdapter : RecyclerView.Adapter<ConseilAdapter.ViewHolder>() {
-        private var current : List<Conseil> = listOf()
+        private var current : List<ConseilAvecDetails> = listOf()
 
         inner class ViewHolder(val binding : ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {}
 
@@ -116,7 +117,7 @@ class ListConseilsFragment : Fragment() {
         }
 
         override fun onBindViewHolder(holder: ConseilAdapter.ViewHolder, position: Int) {
-            val conseil : Conseil = current[position]
+            val conseil : Conseil = current[position].conseil
             holder.binding.setVariable(BR.conseil, conseil)
         }
 
@@ -124,12 +125,12 @@ class ListConseilsFragment : Fragment() {
             return current.size
         }
 
-        fun setCurrent (conseils : List<Conseil>) {
+        fun setCurrent (conseils : List<ConseilAvecDetails>) {
             current = conseils
             notifyDataSetChanged()
         }
 
-        fun get(position: Int): Conseil {
+        fun get(position: Int): ConseilAvecDetails {
             return current[position]
         }
     }

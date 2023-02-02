@@ -4,11 +4,8 @@ import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import fr.uha.gm.projet.database.ConseilDao
 import fr.uha.gm.projet.database.JourDao
-import fr.uha.gm.projet.model.Conseil
-import fr.uha.gm.projet.model.Jour
-import fr.uha.gm.projet.model.JourComplet
-import fr.uha.gm.projet.model.JourConseilsAssociation
 import fr.uha.gm.android.livedata.Transformations
+import fr.uha.gm.projet.model.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -29,7 +26,7 @@ class JourViewModel @Inject constructor (
 
     var name : MutableLiveData<String> = Transformations.map(_jour, { it.name })
     var principalId : MutableLiveData<Long> = Transformations.map(_jour, { it.principalId })
-    var principal : MutableLiveData<Conseil> = Transformations.switchMap(principalId) {
+    var principal : MutableLiveData<ConseilComplet> = Transformations.switchMap(principalId) {
             id -> conseilDao.getById(id).asLiveData()
     }
     var conseils : MutableLiveData<List<Conseil>> = Transformations.map(_jourcomplet, { it.conseils })

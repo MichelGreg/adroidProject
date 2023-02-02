@@ -25,4 +25,7 @@ class AppModule {
     @Provides
     fun provideJourDao (db : AppDatabase) = db.getJourDao()
 
+    @Singleton
+    @Provides
+    fun provideTaskDao (db : AppDatabase) = db.getTaskDao()
 }

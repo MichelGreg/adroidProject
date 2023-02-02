@@ -1,5 +1,6 @@
 package fr.uha.gm.projet.ui
 
+/*
 import android.graphics.Point
 import android.graphics.Rect
 import android.os.Build
@@ -15,25 +16,24 @@ import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import fr.uha.gm.projet.BR
 import fr.uha.gm.projet.R
-import fr.uha.gm.projet.databinding.ConseilItemBinding
-import fr.uha.gm.projet.databinding.PickerConseilBinding
-import fr.uha.gm.projet.model.Conseil
-import fr.uha.gm.projet.model.ConseilAvecDetails
+import fr.uha.gm.projet.databinding.DayItemBinding
+import fr.uha.gm.projet.databinding.PickerJourBinding
+import fr.uha.gm.projet.model.JourAvecDetails
 import java.util.*
 
 @AndroidEntryPoint
-class ConseilPickerFragment : DialogFragment() {
+class JourPickerFragment : DialogFragment() {
 
     private lateinit var requestKey: String
     private var initial: Long = 0
 
-    private var _binding: PickerConseilBinding? = null
-    private var viewModel : PickerConseilViewModel? = null
+    private var _binding: PickerJourBinding? = null
+    private var viewModel : PickerJourViewModel? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private lateinit var adapter : ConseilAdapter
+    private lateinit var adapter : JourAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,17 +41,17 @@ class ConseilPickerFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         viewModel =
-            ViewModelProvider(this).get(PickerConseilViewModel::class.java)
+            ViewModelProvider(this).get(PickerJourViewModel::class.java)
 
-        _binding = PickerConseilBinding.inflate(inflater, container, false)
+        _binding = PickerJourBinding.inflate(inflater, container, false)
         binding.list.layoutManager = LinearLayoutManager(binding.root.context, RecyclerView.VERTICAL, false)
         val divider = DividerItemDecoration(binding.list.context, DividerItemDecoration.VERTICAL)
         binding.list.addItemDecoration(divider)
 
-        adapter = ConseilAdapter()
+        adapter = JourAdapter()
         binding.list.adapter = adapter
 
-        viewModel!!.conseils.observe(viewLifecycleOwner) {
+        viewModel!!.jours.observe(viewLifecycleOwner) {
             adapter.setCurrent(it)
         }
         return binding.root
@@ -59,14 +59,14 @@ class ConseilPickerFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val arg = ConseilPickerFragmentArgs.fromBundle(requireArguments())
+        val arg = JourPickerFragmentArgs.fromBundle(requireArguments())
         requestKey = arg.requestKey
         initial = arg.principal
     }
 
-    private fun onSelect(conseil: ConseilAvecDetails) {
+    private fun onSelect(jour: JourAvecDetails) {
         val result = Bundle()
-        result.putLong(CONSEIL, conseil.conseil.cid)
+        result.putLong(JOUR, jour.day.jid)
         parentFragmentManager.setFragmentResult(requestKey, result)
         dismiss()
     }
@@ -99,15 +99,15 @@ class ConseilPickerFragment : DialogFragment() {
         _binding = null
     }
 
-    inner class ConseilAdapter : RecyclerView.Adapter<ConseilAdapter.ViewHolder>() {
+    inner class JourAdapter : RecyclerView.Adapter<JourAdapter.ViewHolder>() {
 
-        private var current : List<ConseilAvecDetails> = listOf()
+        private var current : List<JourAvecDetails> = listOf()
 
         inner class ViewHolder(val binding : ViewDataBinding) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
             override fun onClick(p0: View?) {
-                val conseil : ConseilAvecDetails = current[adapterPosition]
-                onSelect(conseil)
+                val jour : JourAvecDetails = current[adapterPosition]
+                onSelect(jour)
             }
 
             init {
@@ -115,33 +115,34 @@ class ConseilPickerFragment : DialogFragment() {
             }
         }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ConseilAdapter.ViewHolder {
-            val layout : ConseilItemBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.conseil_item, parent, false)
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JourAdapter.ViewHolder {
+            val layout : DayItemBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.day_item, parent, false)
             layout.lifecycleOwner = viewLifecycleOwner
             return ViewHolder(layout)
         }
 
-        override fun onBindViewHolder(holder: ConseilAdapter.ViewHolder, position: Int) {
-            val conseil : ConseilAvecDetails = current[position]
-            holder.binding.setVariable(BR.conseil, conseil)
+        override fun onBindViewHolder(holder: JourAdapter.ViewHolder, position: Int) {
+            val jour : JourAvecDetails = current[position]
+            holder.binding.setVariable(BR.jour, jour)
         }
 
         override fun getItemCount(): Int {
             return current.size
         }
 
-        fun setCurrent (conseils : List<ConseilAvecDetails>) {
-            current = conseils
+        fun setCurrent (jours: List<JourAvecDetails>) {
+            current = jours
             notifyDataSetChanged()
         }
 
-        fun get(position: Int): ConseilAvecDetails {
+        fun get(position: Int): JourAvecDetails {
             return current[position]
         }
 
     }
 
     companion object {
-        const val CONSEIL: String = "CONSEIL"
+        const val JOUR: String = "JOUR"
     }
 }
+*/

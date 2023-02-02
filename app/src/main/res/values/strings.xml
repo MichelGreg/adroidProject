@@ -15,6 +15,11 @@
     <string name="conseil_du_jour">Conseil du jour :</string>
     <string name="nom_du_jour">Nom du jour</string>
     <string name="title_populate">populate</string>
+    <string name="ajoutez_une_tache">Ajoutez une tâche</string>
+    <string name="liste_des_taches">Liste des taches</string>
+    <string name="annuler">Annuler</string>
+    <string name="confirmer">Confirmer</string>
+    <string name="nom_de_la_tache">Nom de la tâche</string>
     <plurals name="compositions">
         <item quantity="zero">%1s et pas d\'autre conseil</item>
         <item quantity="one">%1s and 1 autre conseil</item>

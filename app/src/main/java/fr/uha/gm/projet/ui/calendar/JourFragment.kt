@@ -41,7 +41,7 @@ class JourFragment : Fragment() {
             val principalId : Long = result.getLong(ConseilPickerFragment.CONSEIL)
             jourViewModel!!.setPrincipal(principalId)
         })
-        parentFragmentManager.setFragmentResultListener(CONSEIL, this, FragmentResultListener {
+        parentFragmentManager.setFragmentResultListener(ADVICE, this, FragmentResultListener {
                 requestKey, result ->
             val conseilId : Long = result.getLong(ConseilPickerFragment.CONSEIL)
             jourViewModel!!.addConseil(conseilId)
@@ -60,7 +60,7 @@ class JourFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.setChangePrincipal {
             var action = JourFragmentDirections.actionNavigationDayToPersonPickerFragment(
-                jourViewModel!!.principal.value!!.cid,
+                jourViewModel!!.principal.value!!.conseil.cid,
                 PRINCIPAL
             )
             NavHostFragment.findNavController(this).navigate(action)
@@ -68,12 +68,12 @@ class JourFragment : Fragment() {
         binding.setAddConseil {
             var action = JourFragmentDirections.actionNavigationDayToPersonPickerFragment(
                 0,
-                CONSEIL
+                ADVICE
             )
             NavHostFragment.findNavController(this).navigate(action)
         }
         jourViewModel!!.principal.observe(viewLifecycleOwner) {
-            binding.principal.conseil = it
+            binding.principal.conseil = it.conseil
         }
 
         binding.principal
@@ -175,6 +175,6 @@ class JourFragment : Fragment() {
 
     companion object {
         private val PRINCIPAL: String = "PRINCIPAL"
-        private val CONSEIL: String = "CONSEIL"
+        private val ADVICE: String = "ADVICE"
     }
 }
