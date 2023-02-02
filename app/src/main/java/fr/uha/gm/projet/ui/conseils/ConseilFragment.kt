@@ -15,6 +15,8 @@ import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import fr.uha.gm.projet.BR
@@ -34,6 +36,7 @@ class ConseilFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var adapter : TaskAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +64,17 @@ class ConseilFragment : Fragment() {
             NavHostFragment.findNavController(this).navigate(ConseilFragmentDirections.actionNavigationConseilToTask(
                 TASK
             ))
+        }
+
+        binding.list.layoutManager = LinearLayoutManager(binding.root.context, RecyclerView.VERTICAL, false)
+        val divider = DividerItemDecoration(binding.list.context, DividerItemDecoration.VERTICAL)
+        binding.list.addItemDecoration(divider)
+
+        adapter = TaskAdapter()
+        binding.list.adapter = adapter
+
+        conseilViewModel!!.tasks.observe(viewLifecycleOwner) {
+            adapter.setCurrent(it)
         }
 
         val menuHost : MenuHost = requireActivity()
@@ -148,7 +162,6 @@ class ConseilFragment : Fragment() {
     }
 
     companion object {
-        private val JOUR: String = "JOUR"
         private val TASK: String = "TASK"
     }
 }
