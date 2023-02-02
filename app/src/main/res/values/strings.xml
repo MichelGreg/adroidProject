@@ -25,4 +25,9 @@
         <item quantity="one">%1s and 1 autre conseil</item>
         <item quantity="other">%1s and %2d autres conseils</item>
     </plurals>
+    <plurals name="tasks">
+        <item quantity="zero">Pas de tâche</item>
+        <item quantity="one">1 tâche</item>
+        <item quantity="other">%1d tâches</item>
+    </plurals>
 </resources>

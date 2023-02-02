@@ -117,7 +117,7 @@ class ListConseilsFragment : Fragment() {
         }
 
         override fun onBindViewHolder(holder: ConseilAdapter.ViewHolder, position: Int) {
-            val conseil : Conseil = current[position].conseil
+            val conseil : ConseilAvecDetails = current[position]
             holder.binding.setVariable(BR.conseil, conseil)
         }
 
